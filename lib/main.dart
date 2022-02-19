@@ -27,6 +27,26 @@ class Grade extends StatelessWidget {
         backgroundColor: Colors.amber[800],
         centerTitle: true,
         elevation: 0.0,
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            print('menu button is clicked');
+          },
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('shopping_cart button is clicked');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              print('search button is clicked');
+            },
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 40, 0, 0),
