@@ -7,10 +7,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'zzemalApp',
-      home: Grade(),
+      theme: ThemeData(primarySwatch: Colors.yellow),
+      home: const Grade(),
     );
   }
 }
@@ -27,12 +28,6 @@ class Grade extends StatelessWidget {
         backgroundColor: Colors.amber[800],
         centerTitle: true,
         elevation: 0.0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            print('menu button is clicked');
-          },
-        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.shopping_cart),
@@ -47,6 +42,29 @@ class Grade extends StatelessWidget {
             },
           )
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: AssetImage('assets/rainbowface.jpg'),
+                backgroundColor: Colors.white,
+              ),
+              accountName: const Text('zzemal'),
+              accountEmail: const Text('luckysymbol13@gmail.com'),
+              onDetailsPressed: () {
+                print('arrow is clicked');
+              },
+              decoration: BoxDecoration(
+                  color: Colors.yellow[200],
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(40.0),
+                      bottomRight: Radius.circular(40.0))),
+            )
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 40, 0, 0),
