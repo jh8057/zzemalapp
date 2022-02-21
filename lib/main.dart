@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,13 +12,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'zzemalApp',
       theme: ThemeData(primarySwatch: Colors.yellow),
-      home: const Grade(),
+      home: const MyHome(),
     );
   }
 }
 
-class Grade extends StatelessWidget {
-  const Grade({Key? key}) : super(key: key);
+class MyHome extends StatelessWidget {
+  const MyHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,16 @@ class Grade extends StatelessWidget {
                 backgroundImage: AssetImage('assets/rainbowface.jpg'),
                 backgroundColor: Colors.white,
               ),
+              otherAccountsPictures: const <Widget>[
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/rainbow.png'),
+                  backgroundColor: Colors.white,
+                ),
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/rainbow.png'),
+                  backgroundColor: Colors.white,
+                )
+              ],
               accountName: const Text('zzemal'),
               accountEmail: const Text('luckysymbol13@gmail.com'),
               onDetailsPressed: () {
@@ -62,7 +73,40 @@ class Grade extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(40.0),
                       bottomRight: Radius.circular(40.0))),
-            )
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[800],
+              ),
+              title: const Text('Home'),
+              onTap: () {
+                print('Home is clikced');
+              },
+              trailing: const Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.grey[800],
+              ),
+              title: const Text('Setting'),
+              onTap: () {
+                print('Setting is clikced');
+              },
+              trailing: const Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.grey[800],
+              ),
+              title: const Text('Q&A'),
+              onTap: () {
+                print('Q&A is clikced');
+              },
+              trailing: const Icon(Icons.add),
+            ),
           ],
         ),
       ),
@@ -124,6 +168,12 @@ class Grade extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              TextButton(
+                onPressed: () {
+                  flutterToast();
+                },
+                child: const Text('Toast'),
+              ),
               const SizedBox(
                 height: 30.0,
               ),
@@ -179,8 +229,42 @@ class Grade extends StatelessWidget {
                   backgroundColor: Colors.amber[600],
                 ),
               ),
+              Center(
+                child: TextButton(
+                  child: const Text(
+                    'Hello world',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Hello world',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.teal,
+                        duration: Duration(milliseconds: 1000),
+                      ),
+                    );
+                    print('text pressed');
+                  },
+                ),
+              )
             ]),
       ),
     );
   }
+}
+
+void flutterToast() {
+  Fluttertoast.showToast(
+    msg: 'Flutter',
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.redAccent,
+    fontSize: 20.0,
+    textColor: Colors.black,
+  );
 }
