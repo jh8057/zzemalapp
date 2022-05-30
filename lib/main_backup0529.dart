@@ -288,7 +288,7 @@ class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext ctx2) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.amber[600],
@@ -296,11 +296,48 @@ class SecondPage extends StatelessWidget {
         title: const Text('Second Page'),
       ),
       body: Center(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ElevatedButton(
+            child: const Text('Navigator - 1ST PAGE'),
+            onPressed: () {
+              print('Click navigator');
+              Navigator.pop(ctx2);
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Navigator - GO 3TH PAGE'),
+            onPressed: () {
+              print('Click navigator');
+              Navigator.push(ctx2,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return ThridPage();
+              }));
+            },
+          )
+        ],
+      )),
+    );
+  }
+}
+
+class ThridPage extends StatelessWidget {
+  const ThridPage({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext ctx3) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.amber[600],
+      appBar: AppBar(
+        title: const Text('Thrid Page'),
+      ),
+      body: Center(
         child: ElevatedButton(
-          child: const Text('Navigator - GO NEXT PAGE'),
+          child: const Text('Navigator - 2ND PAGE'),
           onPressed: () {
             print('Click navigator');
-            Navigator.pop(ctx);
+            Navigator.pop(ctx3);
           },
         ),
       ),

@@ -27,4 +27,8 @@ samples, guidance on mobile development, and a full API reference.
 ## memo
 
 - plugins vs packages : [link](https://docs.flutter.dev/development/packages-and-plugins/using-packages)
+
   > pure dart - package
+
+- formattor : setting.json > "editor.defaultFormatter": "Dart-Code.dart-code",
+- flutter format .
