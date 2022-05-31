@@ -28,10 +28,43 @@ class MyHome extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 40.0, 0, 0),
-        child: Column(children: const <Widget>[
-          Text('hello'),
-          Text('hello'),
-        ]),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: [
+                  Column(children: const <Widget>[
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/rainbow.png'),
+                    ),
+                    Text(
+                      'name',
+                      style: TextStyle(
+                          color: Colors.brown,
+                          letterSpacing: 2.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ]),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text(
+                    'ZZemal',
+                    style: TextStyle(color: Colors.black87, fontSize: 50),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+                width: 200,
+              ),
+              Row(
+                children: const <Widget>[
+                  Text('Why so serious?'),
+                  Icon(Icons.search),
+                ],
+              ),
+            ]),
       ),
     );
   }
