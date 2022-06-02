@@ -25,14 +25,14 @@ class MyHome extends StatelessWidget {
           title: const Text('New Start'),
           backgroundColor: Colors.brown,
           elevation: 0.0, // appbar가 떠있는 정도
-          leading:
-              // leading = left button
-              IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              print('menu button is clicked');
-            },
-          ),
+          // leading:
+          // leading = left button
+          //     IconButton(
+          //   icon: const Icon(Icons.menu),
+          //   onPressed: () {
+          //     print('menu button is clicked');
+          //   },
+          // ),
           actions:
               //  actions = right button
               [
@@ -82,7 +82,47 @@ class MyHome extends StatelessWidget {
                     Icon(Icons.search),
                   ],
                 ),
+                const SizedBox(
+                  height: 100,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print('hello');
+                  },
+                  child: const Center(
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/app.gif'),
+                      backgroundColor: Colors.white70,
+                      radius: 60,
+                    ),
+                  ),
+                )
               ]),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: AssetImage('assets/rainbowface.jpg'),
+              ),
+              accountName: const Text('zzemal'),
+              accountEmail: const Text('luckysymbol13@gmail.com'),
+              onDetailsPressed: () {
+                print('arrow click');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                print('Home is Clicked');
+              },
+              trailing: const Icon(Icons.add),
+            )
+          ],
         ),
       ),
     );
