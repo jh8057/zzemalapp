@@ -14,96 +14,85 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   //It's a good practice to expose the ability to provide a key when creating public widgets.
   const MyHome({Key? key}) : super(key: key);
+
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  TextEditingController controller = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('New Start'),
-          backgroundColor: Colors.brown,
-          elevation: 0.0, // appbar가 떠있는 정도
-          // leading:
-          // leading = left button
-          //     IconButton(
-          //   icon: const Icon(Icons.menu),
-          //   onPressed: () {
-          //     print('menu button is clicked');
-          //   },
-          // ),
-          actions:
-              //  actions = right button
-              [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                print('menu search is clicked');
-              },
+        title: const Text('New Start'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            const Padding(padding: EdgeInsets.only(top: 50)),
+            const Center(
+              child: Image(
+                image: AssetImage('assets/app.gif'),
+                width: 170,
+                height: 190,
+              ),
             ),
-          ]),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(30.0, 40.0, 0, 0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  children: [
-                    Column(children: const <Widget>[
-                      CircleAvatar(
-                        backgroundImage: AssetImage('assets/rainbow.png'),
+            Form(
+                child: Theme(
+                    data: ThemeData(
+                      primaryColor: Colors.teal,
+                      inputDecorationTheme: const InputDecorationTheme(
+                        labelStyle: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 15,
+                        ),
                       ),
-                      Text(
-                        'name',
-                        style: TextStyle(
-                            color: Colors.brown,
-                            letterSpacing: 2.0,
-                            fontWeight: FontWeight.bold),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(40),
+                      child: Column(
+                        children: <Widget>[
+                          TextField(
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                labelText: 'Enter "dice"'),
+                            keyboardType: TextInputType.emailAddress,
+                          ),
+                          TextField(
+                            controller: controller2,
+                            decoration:
+                                const InputDecoration(labelText: 'Enter PW'),
+                            keyboardType: TextInputType.text,
+                            obscureText: true,
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          ButtonTheme(
+                            minWidth: 100,
+                            height: 50,
+                            child: TextButton(
+                              onPressed: () {
+                                // if(controller.text == 'dice' && controller2.text == '1234'{
+                                //   Navigator.push(context,
+                                //   MaterialPageRouter(buuild))
+                                // })
+                              },
+                              child: const Icon(
+                                Icons.arrow_forward,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ]),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Text(
-                      'ZZemal',
-                      style: TextStyle(color: Colors.black87, fontSize: 50),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                  width: 200,
-                ),
-                Row(
-                  children: const <Widget>[
-                    Text('Why so serious?'),
-                    Icon(Icons.search),
-                  ],
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    print('hello');
-                  },
-                  child: const Center(
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/app.gif'),
-                      backgroundColor: Colors.white70,
-                      radius: 60,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    print('hello');
-                  },
-                  child: const Text('text'),
-                )
-              ]),
+                    )))
+          ],
         ),
       ),
       drawer: Drawer(
