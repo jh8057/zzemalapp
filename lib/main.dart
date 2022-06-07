@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(const MyApp());
 
@@ -79,16 +80,18 @@ class _MyHomeState extends State<MyHome> {
                             height: 50,
                             child: TextButton(
                               onPressed: () {
-                                // if(controller.text == 'dice' && controller2.text == '1234'{
-                                //   Navigator.push(context,
-                                //   MaterialPageRouter(buuild))
-                                // })
+                                if (controller.text == 'dice' &&
+                                    controller2.text == '1234') {
+                                  print('heelo');
+                                }
                               },
                               child: const Icon(
                                 Icons.arrow_forward,
                               ),
                             ),
-                          )
+                          ),
+                          const MySnackBar(),
+                          const MyToastBtn()
                         ],
                       ),
                     )))
@@ -122,4 +125,59 @@ class _MyHomeState extends State<MyHome> {
       ),
     );
   }
+}
+
+class MySnackBar extends StatelessWidget {
+  const MySnackBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        child: const Text('Show me'),
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text('Hello'),
+              backgroundColor: Color.fromARGB(255, 31, 58, 11),
+              action: SnackBarAction(
+                  label: 'More',
+                  onPressed: () {
+                    print('hello');
+                  }),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: const BorderSide(color: Colors.teal, width: 5)),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MyToastBtn extends StatelessWidget {
+  const MyToastBtn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        child: Text('Toast'),
+        onPressed: () {
+          flutterToast();
+        },
+      ),
+    );
+  }
+}
+
+void flutterToast() {
+  Fluttertoast.showToast(
+      msg: 'Flutter Toast!',
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.green,
+      fontSize: 20,
+      textColor: Colors.white,
+      toastLength: Toast.LENGTH_SHORT);
 }
