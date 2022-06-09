@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -88,7 +89,8 @@ class _MyHomeState extends State<MyHome> {
                             ),
                           ),
                           const MySnackBar(),
-                          const MyToastBtn()
+                          const MyToastBtn(),
+                          const MyNavigator()
                         ],
                       ),
                     )))
@@ -113,7 +115,7 @@ class _MyHomeState extends State<MyHome> {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
-                print('Home is Clicked');
+                flutterToast('Home clicked!');
               },
               trailing: const Icon(Icons.add),
             )
@@ -140,7 +142,7 @@ class MySnackBar extends StatelessWidget {
               action: SnackBarAction(
                   label: 'More',
                   onPressed: () {
-                    print('hello');
+                    flutterToast('Clicked More!');
                   }),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -162,16 +164,56 @@ class MyToastBtn extends StatelessWidget {
       child: TextButton(
         child: const Text('Toast'),
         onPressed: () {
-          flutterToast();
+          flutterToast('Toast Msg');
         },
       ),
     );
   }
 }
 
-void flutterToast() {
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('SecondPage'),
+      ),
+      body: Center(
+        child: TextButton(
+          child: const Text('Go First Page'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class MyNavigator extends StatelessWidget {
+  const MyNavigator({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        child: const Text('First Page'),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return const SecondPage();
+          }));
+        },
+      ),
+    );
+  }
+}
+
+void flutterToast(msg) {
   Fluttertoast.showToast(
-      msg: 'Flutter Toast!',
+      msg: msg,
       gravity: ToastGravity.BOTTOM,
       backgroundColor: Colors.green,
       fontSize: 20,
