@@ -80,10 +80,7 @@ class _MyHomeState extends State<MyHome> {
                             height: 50,
                             child: TextButton(
                               onPressed: () {
-                                if (controller.text == 'dice' &&
-                                    controller2.text == '1234') {
-                                  print('heelo');
-                                }
+                                judgeUser(controller, controller2);
                               },
                               child: const Icon(
                                 Icons.arrow_forward,
@@ -163,7 +160,7 @@ class MyToastBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
-        child: Text('Toast'),
+        child: const Text('Toast'),
         onPressed: () {
           flutterToast();
         },
@@ -180,4 +177,10 @@ void flutterToast() {
       fontSize: 20,
       textColor: Colors.white,
       toastLength: Toast.LENGTH_SHORT);
+}
+
+void judgeUser(controller, controller2) {
+  if (controller.text == 'dice' && controller2.text == '1234') {
+    print('You are my User');
+  }
 }
