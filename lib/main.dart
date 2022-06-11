@@ -181,11 +181,26 @@ class SecondPage extends StatelessWidget {
         title: const Text('SecondPage'),
       ),
       body: Center(
-        child: TextButton(
-          child: const Text('Go First Page'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 300,
+            ),
+            TextButton(
+              child: const Text('Go First Page'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            TextButton(
+                child: const Text('Go Third Page'),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyContainer()));
+                }),
+          ],
         ),
       ),
     );
@@ -199,13 +214,43 @@ class MyNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
-        child: const Text('First Page'),
+        child: const Text('Go Second Page'),
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) {
             return const SecondPage();
           }));
         },
+      ),
+    );
+  }
+}
+
+class MyContainer extends StatelessWidget {
+  const MyContainer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.blue,
+              width: 100,
+              height: 100,
+              margin: const EdgeInsets.all(20),
+              child: const Text('Hello Container'),
+            ),
+            TextButton(
+              child: const Text('Go Back Page'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
