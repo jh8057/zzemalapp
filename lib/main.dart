@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'ScreenA.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,9 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'zzemalApp',
-      home: MyHome(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHome(),
+        '/A': (context) => const ScreenA(),
+      },
     );
   }
 }
@@ -182,10 +187,8 @@ class SecondPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(
-              height: 300,
-            ),
             TextButton(
               child: const Text('Go First Page'),
               onPressed: () {
@@ -195,10 +198,15 @@ class SecondPage extends StatelessWidget {
             TextButton(
                 child: const Text('Go Third Page'),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MyContainer()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const MyContainer()));
+                }),
+            TextButton(
+                child: const Text('Go ScreenA Page'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/A');
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (_) => const ScreenA()));
                 }),
           ],
         ),
