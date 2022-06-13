@@ -4,12 +4,23 @@ class Person {
   Person(this.name, this.age);
 }
 
+class Slot<T> {
+  insert(T shape) {
+    print('$T shape & $shape shape');
+  }
+}
+
+class Circle {}
+
 void main() {
   String name = 'zzemal';
   int age = 20;
   bool isTrue = true;
 
   List<int> numbers = [1, 2, 3, 4, 5];
+  var numList = List.filled(3, 0);
+  print(numList);
+
   Map<String, String> myObj = {'name': 'zzemal'};
 
   print('name : $name');
@@ -26,4 +37,7 @@ void main() {
 
   print(person);
   print(person.name + ' & ' + (person.age).toString());
+
+  var circleSlot = Slot<Circle>();
+  circleSlot.insert(Circle());
 }
