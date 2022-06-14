@@ -6,22 +6,22 @@ class ScreenA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ScreenA'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextButton(
-              child: const Text('Go Back Page'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text('ScreenA'),
         ),
-      ),
-    );
+        body: Center(
+            child: ElevatedButton(
+          child: const Text('Go Back'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.thumb_up),
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('I LIKE IT!'), duration: Duration(seconds: 5)));
+          },
+        ));
   }
 }
