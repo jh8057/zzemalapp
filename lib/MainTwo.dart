@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_app/login.dart';
 import './ScreenA.dart';
 
 class MainTwo extends StatelessWidget {
@@ -12,19 +13,32 @@ class MainTwo extends StatelessWidget {
           title: const Text('MainTwo'),
         ),
         body: Center(
-            child: ElevatedButton(
-          child: const Text('Go ScreenA'),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ScreenA()));
-          },
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              child: const Text('Go ScreenA'),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const ScreenA()));
+              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              child: const Text('Go Login'),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
+              },
+            ),
+          ],
         )),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.thumb_up),
           onPressed: () {
             doSnack(context);
-            // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            //     content: Text('I LIKE IT!'), duration: Duration(seconds: 5)));
           },
         ));
   }

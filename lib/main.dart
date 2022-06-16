@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_app/login.dart';
 import 'ScreenA.dart';
 import 'MainTwo.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MainTwo(),
         '/A': (context) => const ScreenA(),
+        '/login': (context) => const Login(),
       },
     );
   }
