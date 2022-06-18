@@ -12,6 +12,12 @@ class Slot<T> {
 
 class Circle {}
 
+class MyInfo {
+  final String myName;
+
+  MyInfo(this.myName);
+}
+
 void main() {
   String name = 'zzemal';
   int age = 20;
@@ -42,14 +48,15 @@ void main() {
   circleSlot.insert(Circle());
 
   // final vs const
-  // final : fianl can be set only once
+  // final : fianl can be set only once - run time constant (앱이 실행 된 후)
   // const : compile-time constant
 
   const int myAge = 17;
-  final myName = <String>['zzemal'];
+  final time = DateTime.now();
 
-  // myAge = 1;
-  // myName = 'T';
   print(myAge);
-  print(myName);
+  print(time);
+
+  MyInfo p1 = MyInfo('real Name');
+  print(p1.myName);
 }
