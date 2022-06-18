@@ -40,4 +40,16 @@ void main() {
 
   var circleSlot = Slot<Circle>();
   circleSlot.insert(Circle());
+
+  // final vs const
+  // final : fianl can be set only once
+  // const : compile-time constant
+
+  const int myAge = 17;
+  final myName = <String>['zzemal'];
+
+  // myAge = 1;
+  // myName = 'T';
+  print(myAge);
+  print(myName);
 }
