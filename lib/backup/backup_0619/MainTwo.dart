@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:my_app/login.dart';
+import 'login.dart';
 import './ScreenA.dart';
 
 class MainTwo extends StatelessWidget {

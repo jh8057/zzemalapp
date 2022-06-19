@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:my_app/main.dart';
+import 'main.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
