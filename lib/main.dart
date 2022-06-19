@@ -33,13 +33,32 @@ class LogIn extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text('t'),
-              const Text('t')
-              // ButtonTheme(
-              //     height: 50,
-              //     child: ElevatedButton(
-              //       child: Row(children: []),
-              //     ))
+              ButtonTheme(
+                  height: 50,
+                  child: TextButton(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const <Widget>[
+                          Icon(Icons.login_outlined),
+                          Text('Login with Google'),
+                        ]),
+                    onPressed: () {
+                      print('Google Login');
+                    },
+                  )),
+              ButtonTheme(
+                  height: 50,
+                  child: TextButton(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const <Widget>[
+                          Icon(Icons.login_outlined),
+                          Text('Naver'),
+                        ]),
+                    onPressed: () {
+                      print('Google Login');
+                    },
+                  ))
             ]),
       ),
     );
