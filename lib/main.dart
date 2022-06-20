@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'package:my_app/login_app/login.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,55 +14,6 @@ class MyApp extends StatelessWidget {
       title: 'zzemalApp',
       theme: ThemeData(primarySwatch: Colors.grey),
       home: const LogIn(),
-    );
-  }
-}
-
-class LogIn extends StatelessWidget {
-  const LogIn({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text('Sign In', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        elevation: 0.2,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ButtonTheme(
-                  height: 50,
-                  child: TextButton(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const <Widget>[
-                          Icon(Icons.login_outlined),
-                          Text('Login with Google'),
-                        ]),
-                    onPressed: () {
-                      print('Google Login');
-                    },
-                  )),
-              ButtonTheme(
-                  height: 50,
-                  child: TextButton(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const <Widget>[
-                          Icon(Icons.login_outlined),
-                          Text('Naver'),
-                        ]),
-                    onPressed: () {
-                      print('Google Login');
-                    },
-                  ))
-            ]),
-      ),
     );
   }
 }
@@ -168,10 +121,4 @@ void flutterToast(msg) {
       fontSize: 20,
       textColor: Colors.white,
       toastLength: Toast.LENGTH_SHORT);
-}
-
-void judgeUser(controller, controller2) {
-  if (controller.text == 'dice' && controller2.text == '1234') {
-    print('You are my User');
-  }
 }
