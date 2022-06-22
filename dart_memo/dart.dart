@@ -59,4 +59,18 @@ void main() {
 
   MyInfo p1 = MyInfo('real Name');
   print(p1.myName);
+
+  forLoop();
+}
+
+void forLoop() {
+  for (int i = 0; i < 5; i++) {
+    print('$i is Coming!');
+  }
+
+  List<String> carList = ['BMW', 'Volvo'];
+
+  carList.forEach((el) {
+    print(el);
+  });
 }
