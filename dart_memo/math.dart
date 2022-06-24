@@ -5,9 +5,15 @@ List<int> lottoNum() {
   List<int> lottoList = [];
   var num;
 
-  for (int i = 0; i < 6; i++) {
+  // for (int i = 0; i < 6; i++) {
+  //   num = random.nextInt(45) + 1;
+  //   lottoList.add(num);
+  // }
+  int i = 0;
+  while (i < 6) {
     num = random.nextInt(45) + 1;
     lottoList.add(num);
+    i++;
   }
   return lottoList;
 }
