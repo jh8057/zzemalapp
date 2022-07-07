@@ -1,6 +1,6 @@
 enum Status {
   // 타입을 강제하고
-  // 제한을 두기 위해서
+  // 제한을 두기 위해서 + 나중에 생각하기 쉽게 하기 위해서
   approve,
   rejected
 }
@@ -31,4 +31,21 @@ void main() {
 
   Status now = Status.approve;
   print(now);
+
+  int namedParams({int x = 10, required int y}) {
+    return x + y;
+  }
+
+  int result1 = namedParams(y: 20);
+  print(result1);
+
+  MyNum fun1 = add;
+
+  int result = fun1(10, 20, 30);
+  print(result);
 }
+
+//signature
+typedef MyNum = int Function(int x, int y, int z);
+
+int add(int x, int y, int z) => x + y + z;
