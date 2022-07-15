@@ -1,1 +1,0 @@
-print('iam from ipad')
