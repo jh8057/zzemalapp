@@ -1,47 +1,28 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'zzemalApp',
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: const SplashPage(),
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    // Enable virtual display.
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('My App', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        elevation: 0.2,
-      ),
-      body: _splashPage(),
+    return const WebView(
+      initialUrl: 'https://flutter.dev',
     );
   }
-}
-
-Widget _splashPage() {
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset('assets/app.gif'),
-        const CircularProgressIndicator(
-          color: Colors.black,
-        )
-      ],
-    ),
-  );
 }
