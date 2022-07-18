@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_web/webview_flutter_web.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,8 +16,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    // Enable virtual display.
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    // WebView.platform = AndroidWebView();
+    //webview for web platform
+    WebView.platform = WebWebViewPlatform();
   }
 
   @override
