@@ -6,3 +6,4 @@
 - axis : main, cross , column, row, expanded, flex
 - webview : plugin, controller, statefulwidget
 - stateful life cycle : state
+- PageView, Timer, controller, children-map
