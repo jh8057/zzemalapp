@@ -43,6 +43,10 @@ void main() {
 
   int result = fun1(10, 20, 30);
   print(result);
+
+  DateTime nowTime = DateTime.now();
+  print(nowTime.minute);
+  print(nowTime.isAfter(nowTime.subtract(Duration(hours: 10))));
 }
 
 //signature
