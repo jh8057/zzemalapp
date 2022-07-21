@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/dart_project/4.imageCarousel.dart';
+import 'package:my_app/dart_project/5.datepicker.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'zzemalApp',
-      home: ImagePage(),
+      home: MyDatePicker(),
     );
   }
 }
