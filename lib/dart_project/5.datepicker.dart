@@ -14,6 +14,8 @@ class _MyDatePickerState extends State<MyDatePicker> {
   final now = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    // final theme = Theme.of(context); 가까운 context 내용 가져옴
+    // final size = MediaQuery.of(context).size
     return Scaffold(
         appBar: AppBar(
           title: const Text('DatePicker'),
